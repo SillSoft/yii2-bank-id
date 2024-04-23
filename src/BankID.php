@@ -222,5 +222,4 @@ class BankID
         if (!file_exists($this->cert))
             throw new InvalidArgumentException('Certificate file does not exist');
     }
-
 }
