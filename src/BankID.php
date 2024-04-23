@@ -6,7 +6,6 @@ use sillsoft\BankId\src\exceptions\BadResponseException;
 use sillsoft\BankId\src\response\AccessTokenResponse;
 use sillsoft\BankId\src\response\ResourceClientResponse;
 use sillsoft\BankId\src\valueObject\AccessToken;
-use yii\base\InvalidArgumentException;
 use yii\httpclient\Client;
 use yii\httpclient\Response;
 
@@ -58,8 +57,6 @@ class BankID
         $this->clientId = $clientId;
         $this->clientSecret = $clientSecret;
         $this->cert = $cert;
-
-        $this->validateCert();
     }
 
     /**
@@ -81,10 +78,10 @@ class BankID
             'dataset' => $dataset,
         ];
         $httpResponse = $this->sendRequest($this->getApiUrl() . '/bank/oauth2/authorize', 'GET', $body);
-        if ($httpResponse->getStatusCode() == 200)
+        if ($httpResponse->getStatusCode() !== 200)
             throw new BadResponseException($httpResponse);
 
-        return $this->getApiUrl() . '/' . $httpResponse->headers->get('location');
+        return $this->host . '/' . $httpResponse->headers->get('location');
     }
 
     /**
@@ -106,7 +103,7 @@ class BankID
             'client_secret' => $this->clientSecret
         ];
         $httpResponse = $this->sendRequest($this->getApiUrl() . '/bank/oauth2/token', 'POST', $body);
-        if ($httpResponse->getStatusCode() == 200)
+        if ($httpResponse->getStatusCode() !== 200)
             throw new BadResponseException($httpResponse);
 
         $prepareResponse = new AccessTokenResponse($httpResponse->getData());
@@ -132,7 +129,7 @@ class BankID
             'memberId' => $response->getMemberId(),
         ];
         $httpResponse = $this->sendRequest($this->getApiUrl() . '/bank/data', 'POST', $body, $headers);
-        if ($httpResponse->getStatusCode() == 200)
+        if ($httpResponse->getStatusCode() !== 200)
             throw new BadResponseException($httpResponse);
 
         var_dump($httpResponse->getData());
@@ -170,7 +167,7 @@ class BankID
             'cert' => base64_encode($this->getCert()),
         ];
         $httpResponse = $this->sendRequest($this->getApiUrl() . '/bank/resource/client', 'POST', $body, $headers);
-        if ($httpResponse->getStatusCode() == 200)
+        if ($httpResponse->getStatusCode() !== 200)
             throw new BadResponseException($httpResponse);
 
         return new ResourceClientResponse($httpResponse->getData());
@@ -212,14 +209,5 @@ class BankID
     protected function getRandomState(int $length = 32): string
     {
         return bin2hex(random_bytes($length / 2));
-    }
-
-    /**
-     * @return void
-     */
-    protected function validateCert(): void
-    {
-        if (!file_exists($this->cert))
-            throw new InvalidArgumentException('Certificate file does not exist');
     }
 }
