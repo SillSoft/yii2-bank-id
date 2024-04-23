@@ -1,0 +1,21 @@
+{
+    "name": "sillsoft/yii2-bank-id",
+    "description": "bank id",
+    "type": "library",
+    "keywords": ["yii2","extension"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "SillSoft",
+            "email": "info@sillsoft.com"
+        }
+    ],
+    "require": {
+        "yiisoft/yii2": "~2.0.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "sillsoft\\BankId\\": ""
+        }
+    }
+}
