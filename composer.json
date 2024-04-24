@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "sillsoft\\BankId\\src\\": ""
+            "sillsoft\\BankId\\": "src/"
         }
     }
 }
