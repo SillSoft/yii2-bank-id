@@ -127,6 +127,40 @@ class BankID
             'cert' => $response->getCert(),
             'sidBi' => $response->getSidBi(),
             'memberId' => $response->getMemberId(),
+            'fields' => [
+                'lastName',
+                'firstName',
+                'middleName',
+                'phone',
+                'inn',
+                'birthDay',
+                'birthPlace',
+                'sex',
+                'email'
+            ],
+            'addresses' => [
+                'type' => 'factual',
+                'fields' => [
+                    'country',
+                    'state',
+                    'area',
+                    'city',
+                    'street',
+                    'houseNo',
+                    'flatNo'
+                ]
+            ],
+            'documents' => [
+                'type' => 'passport',
+                'fields' => [
+                    'typeName',
+                    'series',
+                    'number',
+                    'issue',
+                    'dateIssue',
+                    'dateExpiration'
+                ]
+            ]
         ];
         $httpResponse = $this->sendRequest($this->getApiUrl() . '/bank/data', 'POST', $body, $headers);
         if ($httpResponse->getStatusCode() != 200)
