@@ -78,10 +78,10 @@ class BankID
             'dataset' => $dataset,
         ];
         $httpResponse = $this->sendRequest($this->getApiUrl() . '/bank/oauth2/authorize', 'GET', $body);
-        if ($httpResponse->getStatusCode() !== 200)
+        if ($httpResponse->getStatusCode() != 200)
             throw new BadResponseException($httpResponse);
 
-        return $this->host . '/' . $httpResponse->headers->get('location');
+        return $this->host . $httpResponse->headers->get('location');
     }
 
     /**
@@ -103,7 +103,7 @@ class BankID
             'client_secret' => $this->clientSecret
         ];
         $httpResponse = $this->sendRequest($this->getApiUrl() . '/bank/oauth2/token', 'POST', $body);
-        if ($httpResponse->getStatusCode() !== 200)
+        if ($httpResponse->getStatusCode() != 200)
             throw new BadResponseException($httpResponse);
 
         $prepareResponse = new AccessTokenResponse($httpResponse->getData());
@@ -129,7 +129,7 @@ class BankID
             'memberId' => $response->getMemberId(),
         ];
         $httpResponse = $this->sendRequest($this->getApiUrl() . '/bank/data', 'POST', $body, $headers);
-        if ($httpResponse->getStatusCode() !== 200)
+        if ($httpResponse->getStatusCode() != 200)
             throw new BadResponseException($httpResponse);
 
         var_dump($httpResponse->getData());
@@ -167,7 +167,7 @@ class BankID
             'cert' => base64_encode($this->getCert()),
         ];
         $httpResponse = $this->sendRequest($this->getApiUrl() . '/bank/resource/client', 'POST', $body, $headers);
-        if ($httpResponse->getStatusCode() !== 200)
+        if ($httpResponse->getStatusCode() != 200)
             throw new BadResponseException($httpResponse);
 
         return new ResourceClientResponse($httpResponse->getData());
