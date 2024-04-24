@@ -1,17 +1,17 @@
 <?php
 
-namespace sillsoft\BankId\src;
+namespace sillsoft\BankId;
 
-use sillsoft\BankId\src\exceptions\BadResponseException;
-use sillsoft\BankId\src\response\AccessTokenResponse;
-use sillsoft\BankId\src\response\ResourceClientResponse;
-use sillsoft\BankId\src\valueObject\AccessToken;
+use sillsoft\BankId\exceptions\BadResponseException;
+use sillsoft\BankId\response\AccessTokenResponse;
+use sillsoft\BankId\response\ResourceClientResponse;
+use sillsoft\BankId\valueObject\AccessToken;
 use yii\httpclient\Client;
 use yii\httpclient\Response;
 
 /**
  * Class BankID
- * @package sillsoft\BankId\src
+ * @package sillsoft\BankId
  */
 class BankID
 {

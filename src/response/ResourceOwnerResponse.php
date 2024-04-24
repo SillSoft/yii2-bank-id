@@ -1,10 +1,10 @@
 <?php
 
-namespace sillsoft\BankId\src\response;
+namespace sillsoft\BankId\response;
 
 /**
  * Class ResourceOwnerResponse
- * @package sillsoft\BankId\src\response
+ * @package sillsoft\BankId\response
  */
 class ResourceOwnerResponse
 {

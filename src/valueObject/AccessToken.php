@@ -1,12 +1,12 @@
 <?php
 
-namespace sillsoft\BankId\src\valueObject;
+namespace sillsoft\BankId\valueObject;
 
-use sillsoft\BankId\src\abstracts\Dto;
+use sillsoft\BankId\abstracts\Dto;
 
 /**
  * Class AccessToken
- * @package sillsoft\BankId\src\valueObject
+ * @package sillsoft\BankId\valueObject
  */
 class AccessToken extends Dto
 {

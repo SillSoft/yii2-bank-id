@@ -1,13 +1,13 @@
 <?php
 
-namespace sillsoft\BankId\src\exceptions;
+namespace sillsoft\BankId\exceptions;
 
 use Throwable;
 use yii\httpclient\Response;
 
 /**
  * Class BadResponseException
- * @package sillsoft\BankId\src\exceptions
+ * @package sillsoft\BankId\exceptions
  */
 class BadResponseException extends \Exception
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace sillsoft\BankId\src\abstracts;
+namespace sillsoft\BankId\abstracts;
 
 use yii\base\BaseObject;
 
 /**
  * Class Dto
- * @package sillsoft\BankId\src\abstracts
+ * @package sillsoft\BankId\abstracts
  */
 abstract class Dto extends BaseObject
 {

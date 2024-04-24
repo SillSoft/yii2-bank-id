@@ -2,7 +2,7 @@
     "name": "sillsoft/yii2-bank-id",
     "description": "bank id",
     "type": "library",
-    "keywords": ["yii2","extension"],
+    "keywords": ["bankid","NBU"],
     "license": "MIT",
     "authors": [
         {
@@ -11,7 +11,8 @@
         }
     ],
     "require": {
-        "yiisoft/yii2": "~2.0.0"
+        "yiisoft/yii2": "~2.0.0",
+        "yiisoft/yii2-httpclient": "~2.0.0"
     },
     "autoload": {
         "psr-4": {
